@@ -14,6 +14,7 @@ inputs:
       position: 1
   outfile:
     type: string
+    default: 'output.txt'
 
 stdout: $(inputs.outfile)
 

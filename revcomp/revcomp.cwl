@@ -19,7 +19,6 @@ steps:
     run: reverse.cwl
     in:
       infile: infile
-      outfile: outfile
     out: [outfile]
   complement:
     run: complement.cwl
