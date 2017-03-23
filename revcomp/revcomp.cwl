@@ -1,13 +1,14 @@
 cwlVersion: v1.0
 class: Workflow
 
+requirements:
+  - class: InlineJavascriptRequirement
+
 inputs:
   infile:
     type: File
     inputBinding:
       position: 1
-  outfile:
-    type: string
 
 outputs:
   outfile:
@@ -24,5 +25,4 @@ steps:
     run: complement.cwl
     in:
       infile: reverse/outfile
-      outfile: outfile
     out: [outfile]

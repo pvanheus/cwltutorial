@@ -12,11 +12,8 @@ inputs:
     type: File
     inputBinding:
       position: 1
-  outfile:
-    type: string
-    default: 'output.txt'
 
-stdout: $(inputs.outfile)
+stdout: $(inputs.infile.nameroot)_complement$(inputs.infile.nameext)
 
 outputs:
   outfile:

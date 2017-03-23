@@ -12,11 +12,8 @@ inputs:
     type: File
     inputBinding:
       position: 1
-  outfile:
-    type: string
-    default: 'output.txt'
 
-stdout: $(inputs.outfile)
+stdout: $(inputs.infile.nameroot)_reversed$(inputs.infile.nameext)
 
 outputs:
   outfile:
