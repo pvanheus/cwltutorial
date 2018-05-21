@@ -14,12 +14,12 @@ outputs:
 
 steps:
   reverse:
-    run: reverse.cwl
+    run: ../reverse/reverse.cwl
     in:
       dnafile: infile
     out: [rev_dnafile]
   complement:
-    run: complement.cwl
+    run: ../complement/complement.cwl
     in:
       dnafile: reverse/rev_dnafile
     out: [comp_dnafile]
