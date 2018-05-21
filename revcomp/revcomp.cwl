@@ -1,9 +1,6 @@
 cwlVersion: v1.0
 class: Workflow
 
-requirements:
-  - class: InlineJavascriptRequirement
-
 inputs:
   infile:
     type: File
