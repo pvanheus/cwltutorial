@@ -2,6 +2,11 @@ cwlVersion: v1.0
 class: CommandLineTool
 
 hints:
+  SoftwareRequirement:
+    packages:
+      - package: jedi
+        version:
+        - '1.0.0'
   DockerRequirement:
     dockerPull: pvanheus/complement:latest
 
