@@ -150,3 +150,29 @@ how the Common Workflow Language allows you to map command line realities to
 a higher level tool and workflow specification. These specifications
 can then be shared and improved on, paving the way towards collaborative
 and reproductible science!
+
+### Using SoftwareRequirements and Dependency Resolvers
+
+CWL offers an alternative to containers: Software Requirements. These
+are described in the [cwltool documentation](https://github.com/common-workflow-language/cwltool/blob/master/README.rst#leveraging-softwarerequirements-beta)
+and allow software package names to be specified instead of container names.
+This is effectively built around the Galaxy dependency resolvers system
+as described in the [Galaxy docs](https://docs.galaxyproject.org/en/latest/admin/dependency_resolvers.html)
+and this [blog post](http://pvh.wp.sanbi.ac.za/2015/10/09/how-galaxy-resolves-dependencies-or-not/). 
+For these to work `galaxy-lib` needs to be installed and a configuration
+file like [dependency-resolvers.yml](dependency-resolvers.yml) needs to
+be configured. The provided example shows how to point to a `tools`
+directory using the Galaxy packages resolver type. In the `tools/`
+directory of this repository you can find a `jedi` package (version 1.0.0)
+which contains the `reverse.py` and `complement.py` scripts. The
+directory structure is like that expected for Galaxy packages. With
+the base path set correctly in the `dependency-resolvers.yml`, you
+can run e.g. the `reverse.cwl` tool with the command:
+
+    cwl-runner --no-container --beta-dependency-resolvers-configuration dependency-resolvers.yml reverse/reverse.cwl  --dnafile data/dna.txt
+
+Note that this will just set up a path so that the required scripts are
+found, and not resolve dependencies such as the `click` Python module.
+This is a limitation of naive *SoftwareRequirements* that can be
+remedied by using a more sophisticated dependency resolver such as
+**conda**.
